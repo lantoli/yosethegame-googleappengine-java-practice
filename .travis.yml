@@ -3,5 +3,4 @@ jdk:
   - oraclejdk7
 
 after_failure: 
-    - echo "FAILURE REPORT"
-    - "cat ./reports/tests/index.html"
+    - "cat build/reports/tests/index.html"
