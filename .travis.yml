@@ -9,5 +9,7 @@ script:
     - TERM=dumb ./gradlew check
 
 after_failure: 
-    - print_errors.sh
+    - echo "HOLA"
+    - echo %TRAVIS_TEST_RESULT%
+    - ./print_errors.sh
 
