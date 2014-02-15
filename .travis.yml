@@ -9,4 +9,4 @@ script:
     - TERM=dumb ./gradlew build
 
 after_failure: 
-	- print_surefire_reports.sh
+    - print_surefire_reports.sh
