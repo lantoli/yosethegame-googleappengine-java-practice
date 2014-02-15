@@ -9,4 +9,4 @@ script:
     - TERM=dumb ./gradlew build
 
 after_failure: 
-    - print_errors.sh
+    - "cat ./reports/tests/index.html"
