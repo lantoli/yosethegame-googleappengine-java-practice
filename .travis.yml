@@ -2,11 +2,5 @@ language: java
 jdk:
   - oraclejdk7
 
-install:
-    - TERM=dumb ./gradlew tasks
-
-script:
-    - TERM=dumb ./gradlew build
-
 after_failure: 
     - "cat ./reports/tests/index.html"
