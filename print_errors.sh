@@ -1,16 +1,26 @@
 #!/usr/bin/env sh
 echo "Current directory is $(pwd)"
-echo "\n=== LIST ===\n"
-ls -la build/reports/tests
 echo "\n=== ERROR REPORTS ===\n"
 
-for F in build/reports/tests/*
+for F in build/reports/tests/*.html
 do
     echo $F
     cat $F
+    echo "----------------------"
     echo
 done
 
-#    - "cat build/reports/tests/index.html"
+echo
+echo
+echo "\n=== TEST RESULTS ===\n"
+
+for F in build/test-results/*.xml
+do
+    echo $F
+    cat $F
+    echo "----------------------"
+    echo
+done
+
 
 

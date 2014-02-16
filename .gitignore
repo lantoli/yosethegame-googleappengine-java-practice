@@ -1,7 +1,13 @@
+bin
+build
+out
+*.iml
+*.ipr
+*.iws
+.idea
+.gradle
 .classpath
 .project
 .settings
-target
-classes
-lib
-.gradle
+src/main/webapp/WEB-INF/lib
+src/main/webapp/WEB-INF/classes

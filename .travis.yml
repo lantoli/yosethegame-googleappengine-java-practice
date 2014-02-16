@@ -9,6 +9,7 @@ script:
     - TERM=dumb ./gradlew check
 
 after_failure: 
+    - ls -la build/reports/tests
     - chmod +x ./print_errors.sh
     - ./print_errors.sh
 
