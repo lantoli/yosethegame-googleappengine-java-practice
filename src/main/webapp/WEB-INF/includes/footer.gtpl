@@ -1,3 +1,4 @@
-        </div>
-    </body>
+</section>
+<footer>FOOTER</footer>
+</body>
 </html>
