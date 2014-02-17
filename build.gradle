@@ -27,22 +27,10 @@ repositories {
     mavenLocal()
 }
 
-/*
-configurations {
-    precompile
-}
-
-gaelykPrecompileGroovlet.runtimeClasspath += project.configurations.precompile
-gaelykPrecompileTemplate.runtimeClasspath += project.configurations.precompile
-*/
-
 dependencies {
     def gaeVersion = '1.8.9'
     def groovyVersion = '2.1.5'
     groovy "org.codehaus.groovy:groovy-all:${groovyVersion}" 
-//    precompile "org.codehaus.groovy:groovy-ant:${groovyVersion}"     
-//    precompile "org.ow2.asm:asm:4.0" 
-//    precompile "commons-cli:commons-cli:1.2"  
     compile "org.codehaus.groovy:groovy-json:${groovyVersion}"
     compile "org.codehaus.groovy:groovy-servlet:${groovyVersion}"    
     compile "com.google.appengine:appengine-api-1.0-sdk:$gaeVersion",
@@ -51,21 +39,6 @@ dependencies {
 
 	compile 'org.codehaus.groovy.modules.http-builder:http-builder:0.7'
 	
-	
-    /** 
-     * To add binary plugin just declare it as a dependency. For example,
-     * uncomment following to add GPars support to your Gaelyk project.
-     * @see https://github.com/musketyr/gpars-appengine
-     */ 
-    // compile 'org.codehaus.gpars:gpars-appengine:0.1'
-    
-    /**
-     * Gaelyk console serves as playground or key-hole surgery tool for
-     * your application
-     * @see https://github.com/gaelyk/gaelyk-console
-     */
-    // compile 'org.gaelyk:gaelyk-console:2.0'
-    
     testCompile 'org.gaelyk:gaelyk-spock:0.4'
     testCompile "com.google.appengine:appengine-api-stubs:$gaeVersion",
                 "com.google.appengine:appengine-testing:$gaeVersion"
