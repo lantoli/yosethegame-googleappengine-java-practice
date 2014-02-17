@@ -1,6 +1,6 @@
 <% include '/WEB-INF/includes/header.gtpl' %>
 
-Hello world
+Hello Yose
 
 <% include '/WEB-INF/includes/footer.gtpl' %>
 
