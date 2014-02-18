@@ -25,11 +25,6 @@ footer {
 	text-align: center;
 }
 
-header li
-{
-    list-style-type: none;
-}
-
 ul.inline-list
 {
 	overflow: hidden;
