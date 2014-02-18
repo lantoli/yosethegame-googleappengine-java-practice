@@ -1,13 +1,19 @@
+def factors = (params.number as String[]).collect { getFactor(it) }
 response.contentType = "application/json"
-def number = params.number
-if (number.isInteger()) {
-	number = number as int
-	if (number <= 1_000_000) {
-		def factors = new Decomposition().factor(number)
-		json (number: number, decomposition: factors)
+json factors.size() == 1 ? factors[0] : factors
+
+def getFactor(number)  {
+	def ret = [:]
+	if (number.isInteger()) {
+		number = number as int
+		if (number <= 1_000_000) {
+			ret.decomposition = new Decomposition().factor(number)
+		} else {
+			ret.error = "too big number (>1e6)"
+		}
 	} else {
-		json (number: number, error: "too big number (>1e6)")
-	}	
-} else {
-	json (number: number, error: "not a number")
+		ret.error = "not a number"
+	}
+	ret.number = number
+	return ret
 }
