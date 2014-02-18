@@ -24,4 +24,16 @@ class PrimeFactorsServiceSpec extends ServiceSpec {
 		resp.data.error == "not a number"
 		resp.data.decomposition == null
 	}
+
+	def "number too big"() {
+		when:
+		def resp = get(path: "/primeFactors", query: [number: 1000001])
+
+		then:
+		resp.status == 200
+		resp.contentType == "application/json"
+		resp.data.number == 1000001
+		resp.data.error == "too big number (>1e6)"
+		resp.data.decomposition == null
+	}
 }
