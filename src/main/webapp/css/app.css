@@ -4,6 +4,15 @@ body {
 	padding-left: 20px;
 }
 
+.potfolio {
+	font-size: 150%;
+	font-weight: bold;	
+}
+
+.service {
+	font-weight: bold;	
+}
+
 header {
 	margin-bottom: 40px;
 }
