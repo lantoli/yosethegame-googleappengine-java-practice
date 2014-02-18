@@ -1,12 +1,16 @@
 
 class Decomposition {
 
-	def factor2(number) {
+	def factor(long number) {
 		def ret = []
-		while (number >= 2) {
-			number /= 2
-			ret << 2
+		def max = Math.sqrt(number) as long
+		for (long i=2; i<=max && i<number; i++) {
+			while(number % i == 0) {
+				ret << i
+				number /= i
+			}
 		}
+		if (number > 1) ret << number
 		ret
 	}
 }

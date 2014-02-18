@@ -1,7 +1,7 @@
 
 class PrimeFactorsServiceSpec extends ServiceSpec {
 
-	def "prime factors for powers of 2"() {
+	def "prime factors for a good number"() {
 		when:
 		def resp = get(path: "/primeFactors", query: [number: 16])
 
