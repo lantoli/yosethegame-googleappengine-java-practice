@@ -12,13 +12,9 @@
 <body>
 <header>
 <h1>Hello Yose, practices for the game</h1>
-Interesting links:
-<ul>
-<li><a id="repository-link" href="https://github.com/lantoli/yosethegame-googleappengine-java-practice" target="_blank">Source code for this practice</a></li>
-<li><a href="http://yosethegame.com" target="_blank">Yosethegame server, click here to play</a></li>
-<li><a href="https://github.com/yosethegame/yosethegame" target="_blank">Yosethegame in Github</a></li>
-</ul>
-<br>
+<p>This is a practice for <a href="http://yosethegame.com" target="_blank">Yosethegame</a>.
+If you are a software developer you can't miss it. Follow the link to play, learn and have fun.</p>
+<p>You can find here the <strong><a id="repository-link" href="https://github.com/lantoli/yosethegame-googleappengine-java-practice" target="_blank">Source code for this practice.</a></strong></p>
 Some technologies used in this practice:
 <ul>
 <li><a href="https://developers.google.com/appengine" target="_blank">Google App Engine</a></li>
