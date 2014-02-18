@@ -9,6 +9,7 @@ class IndexPage extends Page {
 		bodyText { $("body").text() }
 		repositoryLink { $("a#repository-link").@href }
 		contactLink { $("a#contact-me-link").@href }
+		pingLink { $("a#ping-challenge-link").@href }
 	}
 }
 
@@ -37,5 +38,13 @@ class IndexWebPageSpec extends GebSpec {
 
 		expect:
 		contactLink
+	}
+
+	def "has ping portfolio link"() {
+		given:
+		to IndexPage
+
+		expect:
+		pingLink
 	}
 }
