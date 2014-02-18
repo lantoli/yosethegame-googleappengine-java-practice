@@ -12,6 +12,11 @@ class RoutesSpec extends GaelykRoutingSpec {
 		onlyGet('/ping')
 	}
 
+	def "Prime factors service"() {
+		expect:
+		onlyGet('/primeFactors')
+	}
+
 	def onlyGet(path) {
 		get(path) && !post(path) && !put(path) && !delete(path)
 	}
