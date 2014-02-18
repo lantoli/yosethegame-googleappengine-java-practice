@@ -8,12 +8,13 @@ class IndexPage extends Page {
 	static content = {
 		bodyText { $("body").text() }
 		repositoryLink { $("a#repository-link").@href }
+		contactLink { $("a#contact-me-link").@href }
 	}
 }
 
 class IndexWebPageSpec extends GebSpec {
 
-	def "displays Hello Yose"() {
+	def "has text Hello Yose"() {
 		given:
 		to IndexPage
 
@@ -22,11 +23,19 @@ class IndexWebPageSpec extends GebSpec {
 	}
 
 
-	def "displays repository link to github"() {
+	def "has repository link to github"() {
 		given:
 		to IndexPage
 
 		expect:
 		repositoryLink.contains("github.com")
+	}
+
+	def "has contact info"() {
+		given:
+		to IndexPage
+
+		expect:
+		contactLink
 	}
 }
