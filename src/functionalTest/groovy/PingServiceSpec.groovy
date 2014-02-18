@@ -3,7 +3,7 @@ class PingServiceSpec extends ServiceSpec {
 
 	def "ping service is alive"() {
 		when:
-		def resp = rest.get(path: "/ping")
+		def resp = get(path: "/ping")
 
 		then:
 		resp.status == 200
