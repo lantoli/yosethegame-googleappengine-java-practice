@@ -4,7 +4,7 @@ body {
 	padding-left: 20px;
 }
 
-.potfolio {
+.portfolio {
 	font-size: 150%;
 	font-weight: bold;	
 }
@@ -30,14 +30,14 @@ header li
     list-style-type: none;
 }
 
-footer ul
+ul.inline-list
 {
 	overflow: hidden;
     list-style-type: none;
     padding: 0px;
 }
 
-footer li
+li.inline-list
 {
 	margin: 10px;
 	display: inline;
