@@ -3,7 +3,7 @@
 This is an example of practice to play Yose the game in Java for Google App Engine. 
 [Live Server for this practice](http://yosethegame-practice.appspot.com)
 
-## Yose the game
+## YoseTheGame
 
 [Visit Yose the game in Github](http://github.com/yosethegame/yosethegame)
 
