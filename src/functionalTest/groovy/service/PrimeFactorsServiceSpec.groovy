@@ -1,3 +1,4 @@
+package service
 
 class PrimeFactorsServiceSpec extends ServiceSpec {
 
@@ -10,11 +11,11 @@ class PrimeFactorsServiceSpec extends ServiceSpec {
 		resp.contentType == "application/json"
 		resp.data.number == 16
 		resp.data.decomposition == [2, 2, 2, 2]
-		resp.data.error == null
+		!resp.data.error
 	}
 
 
-	def "not a number"() {
+	def "number with error"() {
 		when:
 		def resp = get(path: "/primeFactors", query: [number: "hello"])
 
@@ -23,19 +24,7 @@ class PrimeFactorsServiceSpec extends ServiceSpec {
 		resp.contentType == "application/json"
 		resp.data.number == "hello"
 		resp.data.error == "not a number"
-		resp.data.decomposition == null
-	}
-
-	def "number too big"() {
-		when:
-		def resp = get(path: "/primeFactors", query: [number: 1000001])
-
-		then:
-		resp.status == 200
-		resp.contentType == "application/json"
-		resp.data.number == 1000001
-		resp.data.error == "too big number (>1e6)"
-		resp.data.decomposition == null
+		!resp.data.decomposition
 	}
 
 	def "multiple numbers to factor"() {
@@ -49,14 +38,14 @@ class PrimeFactorsServiceSpec extends ServiceSpec {
 
 		resp.data[0].number == 300
 		resp.data[0].decomposition == [2, 2, 3, 5, 5]
-		resp.data[0].error == null
+		!resp.data[0].error
 
 		resp.data[1].number == 120
 		resp.data[1].decomposition == [2, 2, 2, 3, 5]
-		resp.data[1].error == null
+		!resp.data[1].error
 
 		resp.data[2].number == "hello"
 		resp.data[2].error == "not a number"
-		resp.data[2].decomposition == null
+		!resp.data[2].decomposition
 	}
 }

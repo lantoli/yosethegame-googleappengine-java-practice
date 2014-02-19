@@ -1,9 +1,10 @@
+package page
 import geb.Page
-import geb.spock.GebSpec
+
 
 class IndexPage extends Page {
 
-	static url = "http://localhost:8888"
+	static url = "/"
 
 	static content = {
 		bodyText { $("body").text() }
@@ -13,7 +14,7 @@ class IndexPage extends Page {
 	}
 }
 
-class IndexWebPageSpec extends GebSpec {
+class IndexPageSpec extends PageSpec {
 
 	def "has text Hello Yose"() {
 		given:

@@ -1,3 +1,4 @@
+package service
 import groovyx.net.http.RESTClient
 import spock.lang.Specification
 

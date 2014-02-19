@@ -1,3 +1,4 @@
+package service
 
 class PingServiceSpec extends ServiceSpec {
 
