@@ -20,13 +20,20 @@ def factor(number) {
 	}
 }
 
-def factors = (params.number as String[]).collect { factor(it) }
 
-if (factors.size() > 0) { 
-	def result = factors.join(', ')
-%>
-	<p id="result">${result}</p>
-<% } %>
+def factors = params['number']?.split(",")?.collect { factor(it.trim()) }
+
+if (factors) {
+	if (factors.size() == 1) { %>
+		<p id="result">${factors[0]}</p>
+<% 	} else { %>
+		<ol id="results">
+<%		for (factor in factors) { %>
+		<li>${factor}</li>
+<% 		} %>
+		</ol>
+<%	}
+} %>
 <form method="post">
 	<input name="number" id="number" type="text">
 	<button id="go" type="submit">Submit</button>

@@ -15,6 +15,8 @@ class PrimeFactorsPage extends Page {
 		number { $("input#number") }
 		go {  $("button#go") }
 		result {  $("#result").text() }
+		resultsList {  $("#results") }
+		results {  $("ol#results>li")*.text() }
 	}
 }
 
@@ -71,5 +73,17 @@ class PrimeFactorsPageSpec extends PageSpec {
 		expect:
 		at PrimeFactorsPage
 		result == "-5572 is not an integer > 1"
+	}
+
+
+	def "multiple numbers"() {
+		given:
+		to PrimeFactorsPage
+		tryNumber("2, 3")
+
+		expect:
+		at PrimeFactorsPage
+		resultsList
+		results == ["2 = 2", "3 = 3"]
 	}
 }
