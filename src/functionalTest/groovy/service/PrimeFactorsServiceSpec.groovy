@@ -14,8 +14,7 @@ class PrimeFactorsServiceSpec extends ServiceSpec {
 		!resp.data.error
 	}
 
-
-	def "number with error"() {
+	def "not a number"() {
 		when:
 		def resp = get(path: "/primeFactors", query: [number: "hello"])
 
@@ -24,6 +23,18 @@ class PrimeFactorsServiceSpec extends ServiceSpec {
 		resp.contentType == "application/json"
 		resp.data.number == "hello"
 		resp.data.error == "not a number"
+		!resp.data.decomposition
+	}
+
+	def "big number"() {
+		when:
+		def resp = get(path: "/primeFactors", query: [number: 1008180])
+
+		then:
+		resp.status == 200
+		resp.contentType == "application/json"
+		resp.data.number == 1008180
+		resp.data.error == "too big number (>1e6)"
 		!resp.data.decomposition
 	}
 

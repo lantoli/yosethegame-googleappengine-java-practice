@@ -31,36 +31,45 @@ class DecompositionSpec extends Specification {
 		123456789 	| [3, 3, 3607, 3803]
 	}
 
-	def "good factors for factorWithErrors"() {
+	def "valid numbers"() {
 		given:
 		def sut = new Decomposition()
-		def res = sut.factorsWithErrors("6")
 
 		expect:
-		res.number == 6
-		res.decomposition == [2, 3]
-		!res.error
+		sut.isValid(number) == valid
+
+		where:
+		number	| valid
+		3		| true
+		"hello" | false
 	}
 
-	def "number too big"() {
+	def "big numbers"() {
 		given:
 		def sut = new Decomposition()
-		def res = sut.factorsWithErrors("1000001")
 
 		expect:
-		res.number == 1000001
-		res.error == "too big number (>1e6)"
-		!res.decomposition
+		sut.isBig(number) == valid
+
+		where:
+		number	| valid
+		3		| false
+		1000000 | false
+		1000001	| true
 	}
 
-	def "not a number including number in the error message"() {
+	def "small numbers"() {
 		given:
 		def sut = new Decomposition()
-		def res = sut.factorsWithErrors("3hello", true)
 
 		expect:
-		res.number == "3hello"
-		res.error == "3hello is not a number"
-		!res.decomposition
+		sut.isSmall(number) == valid
+
+		where:
+		number	| valid
+		3		| false
+		1 		| true
+		0 		| true
+		-10		| true
 	}
 }

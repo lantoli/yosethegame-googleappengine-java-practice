@@ -2,8 +2,22 @@
 <strong id="title">Form for prime factors:</strong>
 <p id="invitation">Please enter the number to be factored</p>
 <% if (params.number) { 
-	def res = new Decomposition().factorsWithErrors(params.number, true)
-	def result = res.error ? res.error : "${params.number} = ${res.decomposition.join(' x ')}"
+	def decomp = new Decomposition()
+	def result
+	def number = params.number
+	if (decomp.isValid(number)) {
+		number = number as int
+		if (decomp.isBig(number)) {
+			result = "too big number (>1e6)"
+		} else if (decomp.isSmall(number)) {
+			result = "${number} is not an integer > 1"		
+		} else {
+			def factors = decomp.factors(number)
+			result = "${number} = ${factors.join(' x ')}"
+		}
+	} else {
+			result = "${number} is not a number"
+	}
 %>
 	<p id="result">${result}</p>
 <% } %>

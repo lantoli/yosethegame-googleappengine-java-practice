@@ -1,27 +1,23 @@
 
+
 class Decomposition {
 
-	def factorsWithErrors(number, numberInError)  {
-		def ret = [:]
-		if (number.isInteger()) {
-			number = number as int
-			if (number <= 1_000_000) {
-				ret.decomposition = factors(number)
-			} else {
-				ret.error = "too big number (>1e6)"
-			}
-		} else {
-			ret.error = numberInError ? "${number} is not a number" : "not a number"
-		}
-		ret.number = number
-		return ret
+	def isValid(number) {
+		number.class == Integer || number.class == Long || number.isLong()
 	}
 
+	def isSmall(int number) {
+		number <= 1
+	}
 
-	def factors(long number) {
+	def isBig(int number) {
+		number > 1_000_000
+	}
+
+	def factors(int number) {
 		def ret = []
-		def max = Math.sqrt(number) as long
-		for (long i=2; i<=max && i<number; i++) {
+		def max = Math.sqrt(number) as int
+		for (int i=2; i<=max && i<number; i++) {
 			while(number % i == 0) {
 				ret << i
 				number /= i

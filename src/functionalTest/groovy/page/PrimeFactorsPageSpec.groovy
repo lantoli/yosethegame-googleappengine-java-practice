@@ -60,4 +60,15 @@ class PrimeFactorsPageSpec extends PageSpec {
 		at PrimeFactorsPage
 		result == "hello is not a number"
 	}
+
+	def "not an integer > 1"() {
+		given:
+		to PrimeFactorsPage
+		number = -5572
+		go.click()
+
+		expect:
+		at PrimeFactorsPage
+		result == "-5572 is not an integer > 1"
+	}
 }
