@@ -1,2 +1,2 @@
 response.contentType = "application/json"
-json(alive: true)
+json alive: true
