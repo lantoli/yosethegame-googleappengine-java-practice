@@ -11,6 +11,7 @@ class IndexPage extends Page {
 		repositoryLink { $("a#repository-link").@href }
 		contactLink { $("a#contact-me-link").@href }
 		pingLink { $("a#ping-challenge-link").@href }
+		primesLink { $("a#prime-factors-decomposition-link").@href }
 	}
 }
 
@@ -47,5 +48,13 @@ class IndexPageSpec extends PageSpec {
 
 		expect:
 		pingLink
+	}
+
+	def "has prime factors portfolio link"() {
+		given:
+		to IndexPage
+
+		expect:
+		primesLink
 	}
 }

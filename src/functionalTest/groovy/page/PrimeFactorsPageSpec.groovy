@@ -14,9 +14,9 @@ class PrimeFactorsPage extends Page {
 	static content = {
 		number { $("input#number") }
 		go {  $("button#go") }
-		result {  $("#result").text() }
-		resultsList {  $("#results") }
-		results {  $("ol#results>li")*.text() }
+		result { $("#result").text() }
+		resultsList { $("#results") }
+		results { $("ol#results>li")*.text() }
 	}
 }
 

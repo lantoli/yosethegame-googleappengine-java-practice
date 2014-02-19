@@ -29,13 +29,13 @@ if (factors) {
 <% 	} else { %>
 		<ol id="results">
 <%		for (factor in factors) { %>
-		<li>${factor}</li>
+			<li>${factor}</li>
 <% 		} %>
 		</ol>
 <%	}
 } %>
 <form method="post">
-	<input name="number" id="number" type="text">
+	<input name="number" id="number" type="text" autofocus>
 	<button id="go" type="submit">Submit</button>
 </form>
 <% include '/WEB-INF/includes/footer.gtpl' %>
