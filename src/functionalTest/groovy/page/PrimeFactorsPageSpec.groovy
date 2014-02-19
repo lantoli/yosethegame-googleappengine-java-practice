@@ -49,4 +49,15 @@ class PrimeFactorsPageSpec extends PageSpec {
 		at PrimeFactorsPage
 		result == "too big number (>1e6)"
 	}
+
+	def "not a number"() {
+		given:
+		to PrimeFactorsPage
+		number = "hello"
+		go.click()
+
+		expect:
+		at PrimeFactorsPage
+		result == "hello is not a number"
+	}
 }

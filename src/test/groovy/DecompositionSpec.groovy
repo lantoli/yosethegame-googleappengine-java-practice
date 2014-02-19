@@ -42,25 +42,25 @@ class DecompositionSpec extends Specification {
 		!res.error
 	}
 
-	def "not a number"() {
-		given:
-		def sut = new Decomposition()
-		def res = sut.factorsWithErrors("hello")
-
-		expect:
-		res.number == "hello"
-		res.error == "not a number"
-		!res.decomposition
-	}
-
 	def "number too big"() {
 		given:
 		def sut = new Decomposition()
-		def res = sut.factorsWithErrors("hello")
+		def res = sut.factorsWithErrors("1000001")
 
 		expect:
-		res.number == "1000001"
+		res.number == 1000001
 		res.error == "too big number (>1e6)"
+		!res.decomposition
+	}
+
+	def "not a number including number in the error message"() {
+		given:
+		def sut = new Decomposition()
+		def res = sut.factorsWithErrors("3hello", true)
+
+		expect:
+		res.number == "3hello"
+		res.error == "3hello is not a number"
 		!res.decomposition
 	}
 }

@@ -1,7 +1,7 @@
 
 class Decomposition {
 
-	def factorsWithErrors(number)  {
+	def factorsWithErrors(number, numberInError)  {
 		def ret = [:]
 		if (number.isInteger()) {
 			number = number as int
@@ -11,7 +11,7 @@ class Decomposition {
 				ret.error = "too big number (>1e6)"
 			}
 		} else {
-			ret.error = "not a number"
+			ret.error = numberInError ? "${number} is not a number" : "not a number"
 		}
 		ret.number = number
 		return ret
