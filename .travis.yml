@@ -3,10 +3,10 @@ jdk:
   - oraclejdk7
 
 install:
-    - TERM=dumb ./gradlew assemble
+    - # disabled temporarly TERM=dumb ./gradlew assemble
 
 script:
-    - TERM=dumb ./gradlew assemble
+    - # disabled temporarly TERM=dumb ./gradlew assemble
 
 after_failure: 
     - ls -la build/reports/tests
