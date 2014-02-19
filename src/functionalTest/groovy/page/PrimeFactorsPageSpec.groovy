@@ -20,6 +20,11 @@ class PrimeFactorsPage extends Page {
 
 class PrimeFactorsPageSpec extends PageSpec {
 
+	def tryNumber(n) {
+		number = n
+		go.click()
+	}
+
 	def "has elements requested"() {
 		given:
 		to PrimeFactorsPage
@@ -31,8 +36,7 @@ class PrimeFactorsPageSpec extends PageSpec {
 	def "good prime factors"() {
 		given:
 		to PrimeFactorsPage
-		number = 6
-		go.click()
+		tryNumber 6
 
 		expect:
 		at PrimeFactorsPage
@@ -42,8 +46,7 @@ class PrimeFactorsPageSpec extends PageSpec {
 	def "number too big"() {
 		given:
 		to PrimeFactorsPage
-		number = 123456789
-		go.click()
+		tryNumber 123456789
 
 		expect:
 		at PrimeFactorsPage
@@ -53,8 +56,7 @@ class PrimeFactorsPageSpec extends PageSpec {
 	def "not a number"() {
 		given:
 		to PrimeFactorsPage
-		number = "hello"
-		go.click()
+		tryNumber "hello"
 
 		expect:
 		at PrimeFactorsPage
@@ -64,8 +66,7 @@ class PrimeFactorsPageSpec extends PageSpec {
 	def "not an integer > 1"() {
 		given:
 		to PrimeFactorsPage
-		number = -5572
-		go.click()
+		tryNumber(-5572)
 
 		expect:
 		at PrimeFactorsPage

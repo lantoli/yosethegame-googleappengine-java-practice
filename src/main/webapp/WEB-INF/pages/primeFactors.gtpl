@@ -1,23 +1,29 @@
 <% include '/WEB-INF/includes/header.gtpl' %>
 <strong id="title">Form for prime factors:</strong>
-<p id="invitation">Please enter the number to be factored</p>
-<% if (params.number) { 
+<p id="invitation">Please enter the comma-separated numbers to be factored</p>
+<% 
+
+def factor(number) {
 	def decomp = new Decomposition()
-	def result
-	def number = params.number
 	if (decomp.isValid(number)) {
-		number = number as int
+		number = number as long
 		if (decomp.isBig(number)) {
-			result = "too big number (>1e6)"
+			return "too big number (>1e6)"
 		} else if (decomp.isSmall(number)) {
-			result = "${number} is not an integer > 1"		
+			return "${number} is not an integer > 1"		
 		} else {
 			def factors = decomp.factors(number)
-			result = "${number} = ${factors.join(' x ')}"
+			return "${number} = ${factors.join(' x ')}"
 		}
 	} else {
-			result = "${number} is not a number"
+		return "${number} is not a number"
 	}
+}
+
+def factors = (params.number as String[]).collect { factor(it) }
+
+if (factors.size() > 0) { 
+	def result = factors.join(', ')
 %>
 	<p id="result">${result}</p>
 <% } %>

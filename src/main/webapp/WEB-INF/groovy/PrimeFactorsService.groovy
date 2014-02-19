@@ -6,7 +6,7 @@ def factor(number) {
 	def decomp = new Decomposition()
 	def ret = [:]
 	if (decomp.isValid(number)) {
-		number = number as int
+		number = number as long
 		if (decomp.isBig(number)) {
 			ret.error = "too big number (>1e6)"
 		} else {
