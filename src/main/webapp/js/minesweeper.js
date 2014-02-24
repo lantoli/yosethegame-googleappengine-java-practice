@@ -47,15 +47,15 @@ function registerClick() {
 			$(this).addClass(suspectMode() ? "suspect" : "lost");
 		} else if(! $(this).hasClass("safe")) {
 			$(this).addClass("safe");
-			var bombs = 0; 
-			neighbours(this).forEach(function(elm) {
-				if ($(elm).hasClass("bomb")) {
-					bombs++;
-				} else {
-					$(elm).click();
-				}
-			});
-			$(this).text(bombs > 0  ? bombs : '');
+			var bombs = bombNeighbours(this).length; 
+			if (bombs == 0) {
+				$(this).text('');
+				neighbours(this).forEach(function(elm) { 
+					$(elm).click(); 
+				});
+			} else {
+				$(this).text(bombs);
+			}
 		}
 	});
 };
@@ -78,6 +78,12 @@ function cellCol(cell) {
 
 function suspectMode() {
 	return $("#suspect-mode").is(':checked');	
+}
+
+function bombNeighbours(cell) {
+	return neighbours(cell).filter(function(elm) {
+		return $(elm).hasClass("bomb");
+	});
 }
 
 function neighbours(cell) {
