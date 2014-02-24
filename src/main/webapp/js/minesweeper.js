@@ -12,7 +12,7 @@ function loadGrid(grid, table) {
 		for (var col=0; col<=len; col++) {
 			if (row !== 0 && col !== 0) {
 				var td = $("<td>X</td>");
-				td.attr("id","cell-" + row + "x" + col);
+				td.attr("id",cellName(row,col));
 				td.addClass(grid[row-1][col-1]);
 				tr.append(td);
 			} else if (row === 0 && col === 0) {
@@ -31,6 +31,49 @@ function registerClick() {
 	$('td').click(function() {
 		if ($(this).hasClass("bomb")) {
 			$(this).addClass("lost");
+		} else {
+			$(this).addClass("safe");
+			$(this).text(bombNeighbours(this).length);
 		}
 	});
+};
+
+function cellName(row,col) {
+	return "cell-" + row + "x" + col;
+}
+
+function cellId(row,col) {
+	return "#" + cellName(row,col);
+}
+
+function cellRow(cell) {
+	return parseInt(cell.id.substring(5,6));
+}
+
+function cellCol(cell) {
+	return parseInt(cell.id.substring(7,8));
+}
+
+function bombNeighbours(cell) {
+	return neighbours(cell).filter(function(elm) {
+		return $(elm).hasClass("bomb");
+	});
+}
+
+function neighbours(cell) {
+	var row = cellRow(cell);
+	var col = cellCol(cell);
+	var ret = [];
+	var y,x;
+	for (y=row-1; y<=row+1; y++) {
+		for (x=col-1; x<=col+1; x++) {
+			if (row !== y || col !== x) {
+				var other = $(cellId(y,x));
+				if (other.length !== 0) {
+					ret.push(other);
+				}
+			}
+		}
+	}	
+	return ret;
 };
