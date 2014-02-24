@@ -48,6 +48,7 @@ Some technologies used in this practice:
 <li><a href="https://code.google.com/p/spock" target="_blank">Spock</a></li>
 <li><a href="http://www.gebish.org" target="_blank">Geb</a></li>
 <li><a href="http://phantomjs.org" target="_blank">Phantomjs</a></li>
+<li><a href="http://jquery.com/" target="_blank">JQuery</a></li>
 <li><a href="https://github.com" target="_blank">Github</a></li>
 </ul>
 <% include '/WEB-INF/includes/footer.gtpl' %>
