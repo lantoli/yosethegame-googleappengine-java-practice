@@ -1,4 +1,17 @@
+$(document).ready(function() { load(); });
 
+(function init() {
+	var initialSize = 8, x,y;
+	var bombTreshold = .2;
+	document.grid = new Array(initialSize);
+	for (y=0; y<initialSize; y++) {
+		document.grid[y] = new Array(initialSize);
+		for (x=0; x<initialSize; x++) {
+			document.grid[y][x] = Math.random() <= bombTreshold ? 'bomb' : 'empty'; 
+		}	
+	};
+})();
+    
 function load() {	
 	loadGrid(document.grid, $('#minesweeper-table'));
 	registerClick();
