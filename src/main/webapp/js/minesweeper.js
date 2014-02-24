@@ -43,18 +43,19 @@ function loadGrid(grid, table) {
 function registerClick() {
 	$('td').click(function() {
 		if ($(this).hasClass("bomb")) {
-			$(this).addClass("lost");
-		} else {
+			$(this).text('');
+			$(this).addClass(suspectMode() ? "suspect" : "lost");
+		} else if(! $(this).hasClass("safe")) {
 			$(this).addClass("safe");
 			var bombs = 0; 
 			neighbours(this).forEach(function(elm) {
 				if ($(elm).hasClass("bomb")) {
 					bombs++;
-				} else if(! $(elm).hasClass("safe")) {
+				} else {
 					$(elm).click();
 				}
 			});
-			$(this).text(bombs === 0 ? '' : bombs);
+			$(this).text(bombs > 0  ? bombs : '');
 		}
 	});
 };
@@ -73,6 +74,10 @@ function cellRow(cell) {
 
 function cellCol(cell) {
 	return parseInt(cell.id.substring(7,8));
+}
+
+function suspectMode() {
+	return $("#suspect-mode").is(':checked');	
 }
 
 function neighbours(cell) {
