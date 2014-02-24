@@ -33,7 +33,8 @@ function registerClick() {
 			$(this).addClass("lost");
 		} else {
 			$(this).addClass("safe");
-			$(this).text(bombNeighbours(this).length);
+			var bombs = bombNeighbours(this).length;
+			$(this).text(bombs === 0 ? '' : bombs);
 		}
 	});
 };
