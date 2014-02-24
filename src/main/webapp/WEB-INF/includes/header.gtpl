@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <title>Yosethegame Practices</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>  
   <link rel="stylesheet" href="/css/app.css" />
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
   <meta charset="utf-8">

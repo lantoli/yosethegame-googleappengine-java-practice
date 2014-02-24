@@ -1,15 +1,28 @@
 <% include '/WEB-INF/includes/header.gtpl' %>
-<strong id="title">Minesweeper</strong>
+<script src="/js/minesweeper.js"></script>
+<style>
+	.empty { background-color: azure;}
+	td { font-size=150%; padding: 5px; }
+}
+</style>
+<script>
+	document.grid = [
+        ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+        ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+        ['empty', 'empty', 'empty', 'empty', 'empty', 'bomb' , 'empty', 'empty'],
+        ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+        ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+        ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+        ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+        ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+	];
+    
+	\$(document).ready(function() { load(); });
+</script>
 
-<table id="minesweeper">
-<% for (row in 1..8) {
-	%> <tr> <%
-	for (col in 1..8) { %>
-		<td id=cell-${row}x${col}>X</td>	
-	<% } %> 
-</tr> <%
-} %>
-</table>
+<strong id="title">Minesweeper</strong>
+<p id="invitation">Please select a cell</p>
+<table id="minesweeper-table"></table>
 
 <% include '/WEB-INF/includes/footer.gtpl' %>
 	
