@@ -7,6 +7,7 @@ def ghUiSource = "${github}/main/webapp/WEB-INF/pages"
 def ghUiTest = "${github}/functionalTest/groovy/page"
 def ghAlgoSource = "${github}/main/groovy"
 def ghAlgoTest = "${github}/test/groovy"
+def ghJavascript = "${github}/main/webapp/js"
 %>
 <ul class="inline-list">
 <li class="inline-list portfolio">Ping</li>
@@ -31,6 +32,11 @@ def ghAlgoTest = "${github}/test/groovy"
 <li class="inline-list service">Algorithm</li>
 <li class="inline-list"><a href="${ghAlgoSource}/Decomposition.groovy" target="_blank">Source</a></li>
 <li class="inline-list"><a href="${ghAlgoTest}/DecompositionSpec.groovy" target="_blank">Specs</a></li>
+</ul>
+<ul class="inline-list">
+<li class="inline-list portfolio">Mine Sweeper</li>
+<li class="inline-list service"><a href="/minesweeper"id="minesweeper-link" target="_blank" class="service">UI</a></li>
+<li class="inline-list"><a href="${ghJavascript}/minesweeper.js" target="_blank">Source</a></li>
 </ul>
 <br>
 Some technologies used in this practice:
