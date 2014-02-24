@@ -33,7 +33,14 @@ function registerClick() {
 			$(this).addClass("lost");
 		} else {
 			$(this).addClass("safe");
-			var bombs = bombNeighbours(this).length;
+			var bombs = 0; 
+			neighbours(this).forEach(function(elm) {
+				if ($(elm).hasClass("bomb")) {
+					bombs++;
+				} else if(! $(elm).hasClass("safe")) {
+					$(elm).click();
+				}
+			});
 			$(this).text(bombs === 0 ? '' : bombs);
 		}
 	});
@@ -53,12 +60,6 @@ function cellRow(cell) {
 
 function cellCol(cell) {
 	return parseInt(cell.id.substring(7,8));
-}
-
-function bombNeighbours(cell) {
-	return neighbours(cell).filter(function(elm) {
-		return $(elm).hasClass("bomb");
-	});
 }
 
 function neighbours(cell) {
