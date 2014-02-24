@@ -2,6 +2,8 @@
 <script src="/js/minesweeper.js"></script>
 <style>
 	.empty { background-color: azure;}
+	.bomb { background-color: red;}
+	.lost { background-color: darkred;}
 	td { font-size=150%; padding: 5px; }
 }
 </style>
