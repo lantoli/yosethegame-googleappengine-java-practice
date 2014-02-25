@@ -2,7 +2,8 @@
 
 class Fire {
 
-	Integer width
+	Integer cols
+	Integer rows
 
 
 	def path(from, to, avoid = null) {
@@ -27,7 +28,7 @@ class Fire {
 					if (i != 0 || j != 0) {
 						def xnew = pos.x + i
 						def ynew = pos.y + j
-						if (xnew >= 0 && ynew >= 0 && xnew < width && ynew < width) {
+						if (xnew >= 0 && ynew >= 0 && xnew < cols && ynew < rows) {
 							def posnew = [x: xnew, y: ynew]
 							if (!prevPositions[posnew] && posnew != from && posnew != avoid) {
 								prevPositions[posnew] = pos

@@ -5,7 +5,7 @@ class FireSpec extends Specification {
 
 	def "same source and dest"() {
 		given:
-		def sut = new Fire(width: 3)
+		def sut = new Fire(rows: 3, cols: 3)
 		def A = [x: 0, y: 0]
 		def B = [x: 0, y: 0]
 
@@ -15,7 +15,7 @@ class FireSpec extends Specification {
 
 	def "direct path"() {
 		given:
-		def sut = new Fire(width: 3)
+		def sut = new Fire(rows: 3, cols: 3)
 
 		expect:
 		sut.pathDirect(A, B) == path
@@ -31,7 +31,7 @@ class FireSpec extends Specification {
 
 	def "avoid blocks"() {
 		given:
-		def sut = new Fire(width: 3)
+		def sut = new Fire(rows: 3, cols: 3)
 
 		expect:
 		sut.path(A, B, avoid) != path

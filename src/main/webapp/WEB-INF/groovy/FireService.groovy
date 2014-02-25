@@ -1,18 +1,20 @@
-def pos(map,width,sym) {
+def pos(map,cols,sym) {
 	def pos = map.indexOf(sym)
-	[x: pos % width, y: pos.intdiv(width)]
+	[x: pos % cols, y: pos.intdiv(cols)]
 } 
 
-def width = params.width as int
 def mapIn = params.map
+def rows = params.width as int
+def cols = mapIn.length().intdiv(rows)
+
+def P = pos(mapIn, cols, "P");
+def W = pos(mapIn, cols, "W");
+def F = pos(mapIn, cols, "F");
 
 def map = []
-width.times { map << mapIn.substring(width * it, width * (it+1)) }
+rows.times { map << mapIn.substring(cols * it, cols * (it+1)) }
 
-def P = pos(mapIn, width, "P");
-def W = pos(mapIn, width, "W");
-def F = pos(mapIn, width, "F");
-def fire = new Fire(width: width)
+def fire = new Fire(rows: rows, cols: cols)
 
 response.contentType = "application/json"
 json  map: map, moves: fire.path(P, W, F) + fire.path(W, F)
