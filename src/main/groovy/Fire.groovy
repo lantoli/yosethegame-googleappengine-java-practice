@@ -7,6 +7,7 @@ class Fire {
 
 
 	def path(from, to, avoid = null) {
+		if (from == null || to == null) return []
 		if (!avoid) return pathDirect(from, to)
 
 		def prevPositions = [(from): null]

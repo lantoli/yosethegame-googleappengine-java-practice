@@ -1,5 +1,6 @@
 def pos(map,cols,sym) {
 	def pos = map.indexOf(sym)
+	if (pos == -1) return null
 	[x: pos % cols, y: pos.intdiv(cols)]
 } 
 
