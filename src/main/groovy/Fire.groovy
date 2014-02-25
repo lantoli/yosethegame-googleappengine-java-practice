@@ -31,7 +31,7 @@ class Fire {
 							def posnew = [x: xnew, y: ynew]
 							if (!prevPositions[posnew] && posnew != from && posnew != avoid) {
 								prevPositions[posnew] = pos
-								positions << posnew
+								positions.add(0,posnew)
 							}
 						}
 					}
