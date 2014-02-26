@@ -18,7 +18,7 @@ class FireSpec extends Specification {
 		def sut = new Fire(rows: 3, cols: 3)
 
 		expect:
-		sut.pathDirect(A, B) == path
+		sut.path(A, B) == path
 
 		where:
 		A				| B 			| path
@@ -39,5 +39,18 @@ class FireSpec extends Specification {
 		where:
 		A				| B 			| avoid			| path
 		[x: 0, y: 0] 	| [x: 2, y: 0]	| [x: 1, y:0] 	| [[dx:1, dy:0], [dx:1, dy:0]]
+	}
+
+
+	def "multiple destinations"() {
+		given:
+		def sut = new Fire(rows: 3, cols: 3)
+
+		expect:
+		sut.path(A, B) == path
+
+		where:
+		A				| B 			| path
+		[x: 0, y: 0] 	| [[x: 1, y: 0]]| [[dx:1, dy:0]]
 	}
 }

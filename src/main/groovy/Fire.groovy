@@ -7,11 +7,27 @@ class Fire {
 
 
 	def path(from, to, avoid = null) {
+		if (from instanceof List) {
+			from = from[0]
+		}
+		if (to instanceof List) {
+			pathSingle(from, to[0], avoid)
+		} else {
+			pathSingle(from, to, avoid)
+		}
+	}
+
+	def pathSingle(from, to, avoid = null) {
 		if (from == null || to == null) return []
-		if (!avoid) return pathDirect(from, to)
+		from = [x: from.x, y: from.y]
+		to = [x: to.x, y: to.y]
+		if (avoid) {
+			avoid = [x: avoid.x, y: avoid.y]
+		} else {
+			return pathSingleDirect(from, to)
+		}
 
 		def prevPositions = [(from): null]
-
 		def positions = [from]
 		while (positions) {
 			def pos = positions.pop()
@@ -42,7 +58,7 @@ class Fire {
 		}
 	}
 
-	def pathDirect(from, to) {
+	def pathSingleDirect(from, to) {
 		def ret = []
 		def xdif = to.x - from.x
 		def xsign = Integer.signum(xdif)
