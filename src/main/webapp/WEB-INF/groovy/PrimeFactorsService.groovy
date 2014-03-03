@@ -1,9 +1,22 @@
-def factors = (params.number as String[]).collect { factor(it) }
+def decomp = new Decomposition()
+def factors = (params.number as String[]).collect { factor(it, decomp) }
 response.contentType = "application/json"
 json factors.size() == 1 ? factors[0] : factors
 
-def factor(number) {
-	def decomp = new Decomposition()
+def factor(number, decomp) {
+	if (decomp.isRoman(number)) {
+		def ret = factorArabic(decomp.romanToArabic(number), decomp)
+		ret.number = number
+		if (ret.decomposition) {
+			ret.decomposition = ret.decomposition.collect { decomp.arabicToRoman(it)  }
+		}
+		ret
+	} else {
+		factorArabic(number, decomp)
+	}
+}
+
+def factorArabic(number, decomp) {
 	def ret = [:]
 	if (decomp.isValid(number)) {
 		number = number as long

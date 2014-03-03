@@ -72,4 +72,43 @@ class DecompositionSpec extends Specification {
 		0 		| true
 		-10		| true
 	}
+
+
+	def "roman numerals"() {
+		given:
+		def sut = new Decomposition()
+
+		expect:
+		sut.romanToArabic(roman) == arabic
+		sut.arabicToRoman(arabic) == roman
+
+		where:
+		roman		| arabic
+		"I"			| 1
+		"II"		| 2
+		"III"		| 3
+		"V"			| 5
+		"X"			| 10
+		"L"			| 50
+		"C"			| 100
+		"IV"		| 4
+		"IX"		| 9
+		"XL"		| 40
+		"XC"		| 90
+	}
+
+	def "is roman"() {
+		given:
+		def sut = new Decomposition()
+
+		expect:
+		sut.isRoman(roman) == isRoman
+
+		where:
+		roman		| isRoman
+		"I"			| true
+		"III"		| true
+		"IVXLC"		| true
+		"IVi"		| false
+	}
 }
