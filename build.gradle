@@ -28,7 +28,7 @@ repositories {
 }
 
 dependencies {
-    def gaeVersion = '1.8.9'
+    def gaeVersion = '1.9.4'
     def groovyVersion = '2.1.5'
     groovy "org.codehaus.groovy:groovy-all:${groovyVersion}" 
     compile "org.codehaus.groovy:groovy-json:${groovyVersion}"

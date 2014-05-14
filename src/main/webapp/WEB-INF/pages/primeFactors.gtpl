@@ -20,10 +20,11 @@ def factor(number) {
 	}
 }
 
-
+def lastDecomposition = application.getAttribute("lastDecomposition");
 def factors = params['number']?.split(",")?.collect { factor(it.trim()) }
 
 if (factors) {
+	application.setAttribute("lastDecomposition", factors[factors.size()-1]); 
 	if (factors.size() == 1) { %>
 		<p id="result">${factors[0]}</p>
 <% 	} else { %>
@@ -38,5 +39,9 @@ if (factors) {
 	<input name="number" id="number" type="text" autofocus>
 	<button id="go" type="submit">Submit</button>
 </form>
+
+<% if (lastDecomposition) { %>
+<br>Last decomposition: <span id="last-decomposition">${lastDecomposition}<span>
+<% } %>
 <% include '/WEB-INF/includes/footer.gtpl' %>
 	

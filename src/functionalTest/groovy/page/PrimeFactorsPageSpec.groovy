@@ -17,6 +17,7 @@ class PrimeFactorsPage extends Page {
 		result { $("#result").text() }
 		resultsList { $("#results") }
 		results { $("ol#results>li")*.text() }
+		lastDecomposition  { $("#last-decomposition").text() }
 	}
 }
 
@@ -86,4 +87,16 @@ class PrimeFactorsPageSpec extends PageSpec {
 		resultsList
 		results == ["2 = 2", "3 = 3"]
 	}
+	
+	def "last decomposition is calculated"() {
+		given:
+		to PrimeFactorsPage
+		tryNumber 6
+		tryNumber 4
+		
+		expect:
+		at PrimeFactorsPage
+		lastDecomposition == "6 = 2 x 3"
+	}
+
 }
